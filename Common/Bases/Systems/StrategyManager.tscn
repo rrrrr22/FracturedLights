@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://corqcohkctg2j"]
+
+[ext_resource type="Script" uid="uid://b6gebne5ndcc2" path="res://Common/Bases/Systems/StrategyManager.cs" id="1_lvcg3"]
+
+[node name="StrategyManager" type="Node"]
+script = ExtResource("1_lvcg3")
