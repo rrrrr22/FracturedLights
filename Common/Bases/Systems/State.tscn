@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4kth2vlkfxr2"]
+
+[ext_resource type="Script" uid="uid://clpq6v3rmgh0i" path="res://Common/Bases/Systems/State.cs" id="1_eg8p5"]
+
+[node name="State" type="Node"]
+script = ExtResource("1_eg8p5")
+stateAnimation = "idle"

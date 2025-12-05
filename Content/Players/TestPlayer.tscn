@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://4ia3w052w6ym"]
+
+[ext_resource type="PackedScene" uid="uid://nvh80axwid43" path="res://Common/Bases/Entity/Entity.tscn" id="1_q0njw"]
+[ext_resource type="PackedScene" uid="uid://b5k72tyqoafjd" path="res://Content/States/PlayerController.tscn" id="2_aymvi"]
+[ext_resource type="Texture2D" uid="uid://cpy4ht0pm4bk6" path="res://Assets/Textures/Gunslinger/Player0_idle.png" id="3_4rvqv"]
+[ext_resource type="Texture2D" uid="uid://dk5wp1qswpg2t" path="res://Assets/Textures/Gunslinger/Player0_walk.png" id="4_3glbl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pawa"]
+atlas = ExtResource("3_4rvqv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeih4"]
+atlas = ExtResource("3_4rvqv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od6jo"]
+atlas = ExtResource("4_3glbl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ufb"]
+atlas = ExtResource("4_3glbl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn3wj"]
+atlas = ExtResource("4_3glbl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg2dy"]
+atlas = ExtResource("4_3glbl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00lrr"]
+atlas = ExtResource("4_3glbl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ovf5"]
+atlas = ExtResource("4_3glbl")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nnnw"]
+atlas = ExtResource("4_3glbl")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g51o3"]
+atlas = ExtResource("4_3glbl")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_beon8"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pawa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeih4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od6jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ufb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn3wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg2dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00lrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ovf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nnnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g51o3")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[node name="Entity" instance=ExtResource("1_q0njw")]
+
+[node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("OnSpawnState")]
+OnSpawnState = NodePath("Control")
+
+[node name="Control" parent="StateMachine" index="0" instance=ExtResource("2_aymvi")]
+
+[node name="Sprite" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_beon8")
+autoplay = "idle"

@@ -1,0 +1,120 @@
+[gd_scene load_steps=18 format=3 uid="uid://nvh80axwid43"]
+
+[ext_resource type="Script" uid="uid://5ekqmb1tl0ov" path="res://Common/Bases/Entity/Entity.cs" id="1_3gj67"]
+[ext_resource type="PackedScene" uid="uid://brxrg0fj3fmak" path="res://Common/Bases/Systems/StateMachine.tscn" id="2_l4s7d"]
+[ext_resource type="Texture2D" uid="uid://cpy4ht0pm4bk6" path="res://Assets/Textures/Gunslinger/Player0_idle.png" id="3_1bcjh"]
+[ext_resource type="Texture2D" uid="uid://dk5wp1qswpg2t" path="res://Assets/Textures/Gunslinger/Player0_walk.png" id="4_l4s7d"]
+[ext_resource type="PackedScene" uid="uid://bl531j6dx13t4" path="res://Common/Bases/Systems/SoftCollider.tscn" id="5_l4s7d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bcjh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pawa"]
+atlas = ExtResource("3_1bcjh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeih4"]
+atlas = ExtResource("3_1bcjh")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_od6jo"]
+atlas = ExtResource("4_l4s7d")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4ufb"]
+atlas = ExtResource("4_l4s7d")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn3wj"]
+atlas = ExtResource("4_l4s7d")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg2dy"]
+atlas = ExtResource("4_l4s7d")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00lrr"]
+atlas = ExtResource("4_l4s7d")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ovf5"]
+atlas = ExtResource("4_l4s7d")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nnnw"]
+atlas = ExtResource("4_l4s7d")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g51o3"]
+atlas = ExtResource("4_l4s7d")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_euq68"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pawa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeih4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_od6jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4ufb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn3wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg2dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00lrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ovf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nnnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g51o3")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("StateMachineNode", "Sprite", "ColShape", "SoftCollider")]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_3gj67")
+StateMachineNode = NodePath("StateMachine")
+Sprite = NodePath("Sprite")
+ColShape = NodePath("CollisionShape")
+SoftCollider = NodePath("SoftCollider")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1bcjh")
+
+[node name="StateMachine" parent="." instance=ExtResource("2_l4s7d")]
+
+[node name="StatsManager" type="Node" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_euq68")
+animation = &"idle"
+
+[node name="SoftCollider" parent="." node_paths=PackedStringArray("Entity") instance=ExtResource("5_l4s7d")]
+Entity = NodePath("..")
