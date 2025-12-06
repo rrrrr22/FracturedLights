@@ -1,12 +1,15 @@
 [gd_scene load_steps=20 format=3 uid="uid://nvh80axwid43"]
 
 [ext_resource type="Script" uid="uid://5ekqmb1tl0ov" path="res://Common/Bases/Entity/Entity.cs" id="1_3gj67"]
+[ext_resource type="Script" uid="uid://4lthvp56l634" path="res://Common/Resources/Custom/Strategies/DebugStrat.cs" id="2_euq68"]
 [ext_resource type="PackedScene" uid="uid://brxrg0fj3fmak" path="res://Common/Bases/Systems/StateMachine.tscn" id="2_l4s7d"]
 [ext_resource type="Texture2D" uid="uid://cpy4ht0pm4bk6" path="res://Assets/Textures/Gunslinger/Player0_idle.png" id="3_1bcjh"]
 [ext_resource type="Texture2D" uid="uid://dk5wp1qswpg2t" path="res://Assets/Textures/Gunslinger/Player0_walk.png" id="4_l4s7d"]
 [ext_resource type="PackedScene" uid="uid://bl531j6dx13t4" path="res://Common/Bases/Systems/SoftCollider.tscn" id="5_l4s7d"]
-[ext_resource type="PackedScene" uid="uid://corqcohkctg2j" path="res://Common/Bases/Systems/StrategyManager.tscn" id="6_euq68"]
-[ext_resource type="PackedScene" uid="uid://bsia2euc2myum" path="res://Common/Bases/Systems/Strategy.tscn" id="7_c3b2w"]
+
+[sub_resource type="Resource" id="Resource_c3b2w"]
+script = ExtResource("2_euq68")
+metadata/_custom_type_script = "uid://4lthvp56l634"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bcjh"]
 
@@ -106,6 +109,7 @@ StateMachineNode = NodePath("StateMachine")
 Sprite = NodePath("Sprite")
 ColShape = NodePath("CollisionShape")
 SoftCollider = NodePath("SoftCollider")
+Strategies = Array[Object]([SubResource("Resource_c3b2w")])
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1bcjh")
@@ -118,8 +122,3 @@ sprite_frames = SubResource("SpriteFrames_euq68")
 animation = &"idle"
 
 [node name="StateMachine" parent="." instance=ExtResource("2_l4s7d")]
-
-[node name="StrategyManager" parent="." node_paths=PackedStringArray("Entity") instance=ExtResource("6_euq68")]
-Entity = NodePath("..")
-
-[node name="Strategy" parent="StrategyManager" instance=ExtResource("7_c3b2w")]

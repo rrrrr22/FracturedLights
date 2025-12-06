@@ -1,7 +1,8 @@
 using Godot;
 using RisingShot;
 using System;
-using System.Xml.XPath;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 public partial class Entity : CharacterBody2D
 {
@@ -11,12 +12,21 @@ public partial class Entity : CharacterBody2D
     [Export] public CollisionShape2D ColShape { get; set; }
     [Export] public Area2D SoftCollider { get; set; }
     [Export] public bool NoTileCollide { get; set; } = false;
+    [Export] public Godot.Collections.Array<Strategy> Strategies {get; set;} = []; 
     public Vector2 OldPosition { get; set; } = Vector2.Zero;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        StrategyEventCaller.OnSpawn(this);
+    }
+
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
         OldPosition = Position;
-
+        //TODO: fix this 
         if (NoTileCollide)
         {
             CollisionLayer = 1;

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DebugStrat" load_steps=3 format=3 uid="uid://1td174a8mwxn"]
+
+[ext_resource type="Script" uid="uid://4lthvp56l634" path="res://Common/Resources/Custom/Strategies/DebugStrat.cs" id="1_c3jhm"]
+[ext_resource type="Texture2D" uid="uid://d0pvtfuwytuo" path="res://icon.svg" id="1_liv2l"]
+
+[resource]
+script = ExtResource("1_c3jhm")
+Texture = ExtResource("1_liv2l")
+DisplayName = "Debug Strat"
+Description = "This is a debug strat desc"
+metadata/_custom_type_script = "uid://4lthvp56l634"

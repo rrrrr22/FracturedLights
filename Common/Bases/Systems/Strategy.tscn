@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsia2euc2myum"]
+[gd_scene load_steps=2 format=3 uid="uid://c4wj7g0w3hctt"]
 
-[ext_resource type="Script" uid="uid://bueuiurcbwbr4" path="res://Common/Bases/Systems/Strategy.cs" id="1_g1x5e"]
+[ext_resource type="Script" uid="uid://cc84n2evidicw" path="res://Common/Resources/Custom/Strategy.cs" id="1_g1x5e"]
 
 [node name="Strategy" type="Node"]
 script = ExtResource("1_g1x5e")
