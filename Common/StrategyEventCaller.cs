@@ -7,9 +7,19 @@ public static class StrategyEventCaller
     {
         foreach (var strategy in entity.Strategies)
         {
-            if (strategy is IEntityStrategy entityStrategy)
+            if (strategy is IOnSpawn entityStrategy)
             {
                 entityStrategy.OnSpawn(entity,entity.Position);
+            }
+        }
+    }
+    public static void OnBodyCollision(Entity entity, KinematicCollision2D collider)
+    {
+        foreach (var strategy in entity.Strategies)
+        {
+            if (strategy is IOnBodyCollision entityStrategy)
+            {
+                entityStrategy.OnBodyCollision(collider);
             }
         }
     }

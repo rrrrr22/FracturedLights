@@ -40,6 +40,7 @@ public partial class Entity : CharacterBody2D
         {
             Velocity = Velocity.Slide(collision.GetNormal());
             MoveAndCollide(collision.GetRemainder().Slide(collision.GetNormal()));
+            StrategyEventCaller.OnBodyCollision(this,collision);
         }
     }
 }
