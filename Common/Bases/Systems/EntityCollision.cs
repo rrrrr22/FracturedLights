@@ -1,24 +1,24 @@
 using Godot;
 using System;
 
-public partial class SoftCollider : Area2D
+public partial class EntityCollision : Area2D
 {
     [Export] public Entity Entity {get; set;}
-    [Export] public bool isCollisionEnabled {get; set;} = true;
+    [Export] public bool IsCollisionPhysicsEnabled {get; set;} = true;
     public override void _PhysicsProcess(double delta)
     {
-        if(isCollisionEnabled && HasOverlappingAreas())
+        if(HasOverlappingAreas())
         {
             foreach(Area2D area in GetOverlappingAreas())
             {
-                if(area is SoftCollider softCollider)
+                if(area is EntityCollision softCollider && softCollider.IsCollisionPhysicsEnabled)
                 {
-                    CollideWithHandler(softCollider);
+                    CollisionPhysics(softCollider);
                 }   
             }
         }
     }
-    public virtual void CollideWithHandler(SoftCollider softCollider)
+    public virtual void CollisionPhysics(EntityCollision softCollider)
     {
         Vector2 dir = Entity.Position.DirectionTo(softCollider.Entity.Position);
         if(dir == Vector2.Zero || dir == Vector2.Inf)
@@ -27,5 +27,10 @@ public partial class SoftCollider : Area2D
         softCollider.Entity.CollideAndSlideNoDelta();
         softCollider.Entity.Velocity = Vector2.Zero;
     }
-    
+
+    public void OnAreaEntered(Area2D area)
+    {
+        if(area is EntityCollision entityCollision)
+            StrategyEventCaller.OnEntityCollision(Entity,entityCollision.Entity);
+    }
 }

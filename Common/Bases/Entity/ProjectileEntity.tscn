@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://s5n3j8slcea0"]
+
+[ext_resource type="PackedScene" uid="uid://nvh80axwid43" path="res://Common/Bases/Entity/Entity.tscn" id="1_ygt76"]
+[ext_resource type="Script" uid="uid://bexexfhu4rb5l" path="res://Common/Bases/Entity/ProjectileEntity.cs" id="2_ak8o6"]
+
+[node name="Entity" instance=ExtResource("1_ygt76")]
+script = ExtResource("2_ak8o6")

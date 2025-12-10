@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhsyih3rqgi6o"]
+[gd_scene load_steps=4 format=3 uid="uid://dhsyih3rqgi6o"]
 
 [ext_resource type="PackedScene" uid="uid://nvh80axwid43" path="res://Common/Bases/Entity/Entity.tscn" id="1_v2itx"]
+[ext_resource type="Script" uid="uid://dfx0k3wf0v6fq" path="res://Common/Bases/Entity/PlayerEntity.cs" id="2_1iqer"]
 [ext_resource type="PackedScene" uid="uid://b5k72tyqoafjd" path="res://Content/States/PlayerController.tscn" id="2_jxpup"]
 
 [node name="Entity" instance=ExtResource("1_v2itx")]
+script = ExtResource("2_1iqer")
 
-[node name="StateMachine" parent="." index="1" node_paths=PackedStringArray("OnSpawnState")]
+[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("OnSpawnState")]
 OnSpawnState = NodePath("Control")
 
 [node name="Control" parent="StateMachine" index="0" instance=ExtResource("2_jxpup")]

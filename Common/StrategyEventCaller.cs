@@ -19,7 +19,17 @@ public static class StrategyEventCaller
         {
             if (strategy is IOnBodyCollision entityStrategy)
             {
-                entityStrategy.OnBodyCollision(collider);
+                entityStrategy.OnBodyCollision(entity, collider);
+            }
+        }
+    }
+    public static void OnEntityCollision(Entity entity, Entity collider)
+    {
+        foreach (var strategy in entity.Strategies)
+        {
+            if (strategy is IOnEntityCollision entityStrategy)
+            {
+                entityStrategy.OnEntityCollision(entity, collider);
             }
         }
     }

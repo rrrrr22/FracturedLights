@@ -3,5 +3,5 @@ using System;
 
 public interface IOnBodyCollision : IEntityStrategy
 {
-    public void OnBodyCollision(KinematicCollision2D collider);
+    public void OnBodyCollision(Entity entity, KinematicCollision2D collider);
 }

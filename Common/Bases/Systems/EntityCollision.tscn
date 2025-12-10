@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl531j6dx13t4"]
+
+[ext_resource type="Script" uid="uid://cb5gcjulps7bm" path="res://Common/Bases/Systems/EntityCollision.cs" id="1_v2n4r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bcjh"]
+
+[node name="EntityCollision" type="Area2D"]
+script = ExtResource("1_v2n4r")
+isCollisionEnabled = null
+
+[node name="EntityCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1bcjh")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]

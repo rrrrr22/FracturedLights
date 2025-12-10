@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://Global/GameManager.tscn"
+
 [dotnet]
 
 project/assembly_name="FracturedLights"

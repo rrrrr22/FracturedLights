@@ -1,16 +1,12 @@
 using Godot;
 using RisingShot;
 using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-
 public partial class Entity : CharacterBody2D
 {
     [Export] public StateMachine StateMachineNode { get; set; }
     [Export] public AnimatedSprite2D Sprite { get; set; }
     [Export] public bool IsAlive { get; set; } = true;
     [Export] public CollisionShape2D ColShape { get; set; }
-    [Export] public Area2D SoftCollider { get; set; }
     [Export] public bool NoTileCollide { get; set; } = false;
     [Export] public Godot.Collections.Array<Strategy> Strategies {get; set;} = []; 
     public Vector2 OldPosition { get; set; } = Vector2.Zero;
